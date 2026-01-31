@@ -1,20 +1,19 @@
-import { GoogleProvider } from "@/components/buttons";
+import ButtonUser from "@/components/button-user";
+import RegisterField from "@/components/field/complite-profile-field";
 
-const RegisterPage = () => {
+const CompleteProfilePage = () => {
   return (
     <div className="w-full h-screen max-w-xl md:max-w-3xl xl:max-w-6xl mx-auto flex items-center justify-center">
       <div className="flex flex-col w-full md:max-w-md max-w-xs items-center">
         <div className="flex flex-col w-full items-start">
-          <h1 className="mb-1 mt-4 text-2xl font-bold tracking-tight">
-            Masuk ke PPI Bartin
+          <h1 className="mb-1 mt-4 text-xl font-semibold">
+            Lengkapi data diri
           </h1>
-          <p className="text-sm text-muted-foreground mb-6">
-            Selamat datang! Silakan masuk untuk melanjutkan akses.
+          <p className="text-sm mb-5">
+            Selamat datang kembali! Lengkapi untuk lanjut
           </p>
         </div>
-
-        <GoogleProvider />
-
+        <RegisterField />
         <div className="mt-6 border-t pt-4 w-full max-w-xs">
           <p className="text-center text-xs text-muted-foreground">
             Mengalami masalah saat lengkapi data diri? Hubungi Admin PPI di{" "}
@@ -22,8 +21,11 @@ const RegisterPage = () => {
           </p>
         </div>
       </div>
+      <div className="absolute top-6 right-6">
+        <ButtonUser />
+      </div>
     </div>
   );
 };
 
-export default RegisterPage;
+export default CompleteProfilePage;

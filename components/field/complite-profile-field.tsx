@@ -2,7 +2,7 @@
 
 import { formSchema, FormSchema } from "@/schemas";
 import { useForm } from "@tanstack/react-form";
-import { Field, FieldError } from "../ui/field";
+import { Field, FieldError, FieldLabel } from "../ui/field";
 import { Input } from "../ui/input";
 import { useState } from "react";
 // import { matchingDataStudent } from "@/lib/action";
@@ -61,7 +61,7 @@ const RegisterField = () => {
   });
 
   return (
-    <div className=" w-full max-w-sm space-y-3">
+    <div className=" w-full space-y-3">
       <div className="space-y-3">
         <form
           className="space-y-3"
@@ -77,13 +77,13 @@ const RegisterField = () => {
                 field.state.meta.isTouched && !field.state.meta.isValid;
               return (
                 <Field aria-invalid={isInvalid}>
+                  <FieldLabel htmlFor={field.name}>Nomor Siswa</FieldLabel>
                   <Input
                     id={field.name}
                     value={field.state.value}
                     name={field.name}
                     onChange={(e) => field.handleChange(e.target.value)}
                     aria-invalid={isInvalid}
-                    placeholder="nomor siswa"
                   />
                   {isInvalid && <FieldError errors={field.state.meta.errors} />}
                 </Field>
@@ -96,13 +96,13 @@ const RegisterField = () => {
                 field.state.meta.isTouched && !field.state.meta.isValid;
               return (
                 <Field aria-invalid={isInvalid}>
+                  <FieldLabel htmlFor={field.name}>Nama Siswa</FieldLabel>
                   <Input
                     id={field.name}
                     value={field.state.value}
                     name={field.name}
                     onChange={(e) => field.handleChange(e.target.value)}
                     aria-invalid={isInvalid}
-                    placeholder="nama kamu"
                   />
                   {isInvalid && <FieldError errors={field.state.meta.errors} />}
                 </Field>

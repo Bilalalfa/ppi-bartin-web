@@ -1,17 +1,23 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Poppins, Libre_Baskerville, IBM_Plex_Mono } from "next/font/google";
 import "./globals.css";
 import { AnchoredToastProvider, ToastProvider } from "@/components/ui/toast";
-import { HeroHeader } from "@/components/header";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const poppins = Poppins({
   subsets: ["latin"],
+  variable: "--font-sans",
+  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const libre_baskerville = Libre_Baskerville({
   subsets: ["latin"],
+  variable: "--font-serif",
+});
+
+const ibm_plex_mono = IBM_Plex_Mono({
+  subsets: ["latin"],
+  variable: "--font-mono",
+  weight: ["100", "200", "300", "400", "500", "600", "700"],
 });
 
 export const metadata: Metadata = {
@@ -26,15 +32,19 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <script
+          async
+          crossOrigin="anonymous"
+          src="https://tweakcn.com/live-preview.min.js"
+        />
+      </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${poppins.variable} ${libre_baskerville.variable} ${ibm_plex_mono.variable} antialiased font-sans`}
       >
-        <ToastProvider>
+        <ToastProvider position="bottom-center">
           <AnchoredToastProvider>
-            <main>
-              <HeroHeader />
-              {children}
-            </main>
+            <main>{children}</main>
           </AnchoredToastProvider>
         </ToastProvider>
       </body>

@@ -15,7 +15,7 @@ export default async function ProtectedLayout({
   const student = await checkNoSiswa(session.user.id);
 
   if (!student?.nomorSiswa) {
-    redirect("/complete-profile");
+    redirect("/complite-profile");
   }
 
   return <>{children}</>;
