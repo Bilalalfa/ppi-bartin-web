@@ -10,7 +10,7 @@ import {
 } from "./ui/dropdown-menu";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 import { authClient } from "@/lib/auth-client";
-import { SignOutSessionButton, DeleteAccount } from "./buttons";
+import { SignOutSessionButton, DeleteAccount, ThemeToggle } from "./buttons";
 
 const ButtonUser = () => {
   const { data: session } = authClient.useSession();
@@ -46,12 +46,13 @@ const ButtonUser = () => {
             </div>
           </div>
         </DropdownMenuLabel>
+        <DropdownMenuSeparator />
         <DropdownMenuGroup>
-          <DropdownMenuSeparator />
+          <ThemeToggle />
           <SignOutSessionButton />
-          <DropdownMenuSeparator />
-          <DeleteAccount />
         </DropdownMenuGroup>
+        <DropdownMenuSeparator />
+        <DeleteAccount />
       </DropdownMenuContent>
     </DropdownMenu>
   );

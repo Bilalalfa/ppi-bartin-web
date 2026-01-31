@@ -3,12 +3,18 @@
 import { useState } from "react";
 import { Button } from "./ui/button";
 import { Spinner } from "./ui/spinner";
-import { IconLogout, IconTrash } from "@tabler/icons-react";
+import {
+  IconLogout,
+  IconMoonStars,
+  IconSunHighFilled,
+  IconTrash,
+} from "@tabler/icons-react";
 import { authClient } from "@/lib/auth-client";
 import { DropdownMenuItem } from "./ui/dropdown-menu";
 import { useRouter } from "next/navigation";
 import { toastManager } from "./ui/toast";
 import { deleteAccount } from "@/lib/action";
+import { useTheme } from "next-themes";
 
 export const ButtonField = ({
   formId,
@@ -130,6 +136,27 @@ export const DeleteAccount = () => {
     <DropdownMenuItem onClick={handleDeleteAccount} variant="destructive">
       <IconTrash />
       Hapus account
+    </DropdownMenuItem>
+  );
+};
+
+export const ThemeToggle = () => {
+  const { setTheme, theme } = useTheme();
+
+  const handleTheme = () => {
+    setTheme(theme === "light" ? "dark" : "light");
+  };
+  return (
+    <DropdownMenuItem onClick={() => handleTheme()}>
+      {theme === "dark" ? (
+        <>
+          <IconSunHighFilled /> <span>light mode</span>
+        </>
+      ) : (
+        <>
+          <IconMoonStars /> <span>dark mode</span>
+        </>
+      )}
     </DropdownMenuItem>
   );
 };

@@ -6,7 +6,7 @@ export const metadata: Metadata = {
 };
 
 const LoginLayout = ({ children }: { children: React.ReactNode }) => {
-  return <div>{children}</div>;
+  return <>{children}</>;
 };
 
 export default LoginLayout;

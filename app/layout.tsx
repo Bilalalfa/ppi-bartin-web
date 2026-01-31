@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Poppins, Libre_Baskerville, IBM_Plex_Mono } from "next/font/google";
 import "./globals.css";
 import { AnchoredToastProvider, ToastProvider } from "@/components/ui/toast";
+import { ThemeProvider } from "@/components/providers/theme-provider";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -31,7 +32,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <head>
         <script
           async
@@ -44,7 +45,16 @@ export default function RootLayout({
       >
         <ToastProvider position="bottom-center">
           <AnchoredToastProvider>
-            <main>{children}</main>
+            <main>
+              <ThemeProvider
+                attribute="class"
+                defaultTheme="system"
+                enableSystem
+                disableTransitionOnChange
+              >
+                {children}
+              </ThemeProvider>
+            </main>
           </AnchoredToastProvider>
         </ToastProvider>
       </body>

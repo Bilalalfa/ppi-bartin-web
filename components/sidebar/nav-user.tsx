@@ -6,6 +6,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import {
   DropdownMenu,
   DropdownMenuContent,
+  DropdownMenuGroup,
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
@@ -16,7 +17,7 @@ import {
   SidebarMenuItem,
   useSidebar,
 } from "@/components/ui/sidebar";
-import { DeleteAccount, SignOutSessionButton } from "../buttons";
+import { DeleteAccount, SignOutSessionButton, ThemeToggle } from "../buttons";
 import { authClient } from "@/lib/auth-client";
 import { redirect } from "next/navigation";
 
@@ -76,8 +77,10 @@ const NavUser = () => {
               </div>
             </DropdownMenuLabel>
             <DropdownMenuSeparator />
-            <DropdownMenuSeparator />
-            <SignOutSessionButton />
+            <DropdownMenuGroup>
+              <ThemeToggle />
+              <SignOutSessionButton />
+            </DropdownMenuGroup>
             <DropdownMenuSeparator />
             <DeleteAccount />
           </DropdownMenuContent>
