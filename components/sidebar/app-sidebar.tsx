@@ -1,13 +1,7 @@
 "use client";
 
 import * as React from "react";
-import {
-  BookOpen,
-  Bot,
-  LayoutDashboard,
-  Settings2,
-  SquareTerminal,
-} from "lucide-react";
+import { BookOpen, Bot, LayoutDashboard, Settings2 } from "lucide-react";
 
 import { NavMain } from "@/components/sidebar/nav-main";
 
@@ -23,7 +17,6 @@ import {
 } from "@/components/ui/sidebar";
 import { IconInnerShadowTop } from "@tabler/icons-react";
 import NavUser from "./nav-user";
-import { usePathname } from "next/navigation";
 
 // This is sample data.
 const data = {

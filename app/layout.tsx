@@ -3,6 +3,7 @@ import { Poppins, Libre_Baskerville, IBM_Plex_Mono } from "next/font/google";
 import "./globals.css";
 import { AnchoredToastProvider, ToastProvider } from "@/components/ui/toast";
 import { ThemeProvider } from "@/components/providers/theme-provider";
+import { TanstackProvider } from "@/components/providers/tanstack";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -52,7 +53,7 @@ export default function RootLayout({
                 enableSystem
                 disableTransitionOnChange
               >
-                {children}
+                <TanstackProvider>{children}</TanstackProvider>
               </ThemeProvider>
             </main>
           </AnchoredToastProvider>

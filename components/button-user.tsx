@@ -11,7 +11,7 @@ import {
 } from "./ui/dropdown-menu";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 import { authClient } from "@/lib/auth-client";
-import { SignOutSessionButton, DeleteAccount } from "./buttons";
+import { SignOutSessionButton } from "./buttons";
 import { Link, Settings2 } from "lucide-react";
 
 const ButtonUser = () => {

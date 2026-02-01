@@ -28,13 +28,8 @@ export const checkNoSiswa = async () => {
 
 export const dataSiswa = async () => {
   return await prisma.dataSiswa.findMany({
-    take: 10,
     orderBy: {
       nama_siswa: "desc",
-    },
-    select: {
-      nama_siswa: true,
-      id_siswa: true,
     },
   });
 };

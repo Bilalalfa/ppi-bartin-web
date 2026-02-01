@@ -18,7 +18,7 @@ import {
   SidebarMenuItem,
   useSidebar,
 } from "@/components/ui/sidebar";
-import { DeleteAccount, SignOutSessionButton } from "../buttons";
+import { SignOutSessionButton } from "../buttons";
 import { authClient } from "@/lib/auth-client";
 import Link from "next/link";
 
