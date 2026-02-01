@@ -1,7 +1,13 @@
 "use client";
 
 import * as React from "react";
-import { BookOpen, Bot, Settings2, SquareTerminal } from "lucide-react";
+import {
+  BookOpen,
+  Bot,
+  LayoutDashboard,
+  Settings2,
+  SquareTerminal,
+} from "lucide-react";
 
 import { NavMain } from "@/components/sidebar/nav-main";
 
@@ -17,6 +23,7 @@ import {
 } from "@/components/ui/sidebar";
 import { IconInnerShadowTop } from "@tabler/icons-react";
 import NavUser from "./nav-user";
+import { usePathname } from "next/navigation";
 
 // This is sample data.
 const data = {
@@ -27,9 +34,9 @@ const data = {
   },
   navMain: [
     {
-      title: "Playground",
-      url: "#",
-      icon: SquareTerminal,
+      title: "Dashboard",
+      url: "/dashboard",
+      icon: LayoutDashboard,
       isActive: true,
       items: [
         {
@@ -50,6 +57,7 @@ const data = {
       title: "Models",
       url: "#",
       icon: Bot,
+
       items: [
         {
           title: "Genesis",
@@ -90,7 +98,7 @@ const data = {
     },
     {
       title: "Settings",
-      url: "#",
+      url: "/dashboard/settings",
       icon: Settings2,
       items: [
         {

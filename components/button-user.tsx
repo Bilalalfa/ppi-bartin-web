@@ -4,13 +4,15 @@ import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuGroup,
+  DropdownMenuItem,
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "./ui/dropdown-menu";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 import { authClient } from "@/lib/auth-client";
-import { SignOutSessionButton, DeleteAccount, ThemeToggle } from "./buttons";
+import { SignOutSessionButton, DeleteAccount } from "./buttons";
+import { Link, Settings2 } from "lucide-react";
 
 const ButtonUser = () => {
   const { data: session } = authClient.useSession();
@@ -48,11 +50,14 @@ const ButtonUser = () => {
         </DropdownMenuLabel>
         <DropdownMenuSeparator />
         <DropdownMenuGroup>
-          <ThemeToggle />
+          <Link href={"/dashboard/settings"}>
+            <DropdownMenuItem>
+              <Settings2 />
+              Setting
+            </DropdownMenuItem>
+          </Link>
           <SignOutSessionButton />
         </DropdownMenuGroup>
-        <DropdownMenuSeparator />
-        <DeleteAccount />
       </DropdownMenuContent>
     </DropdownMenu>
   );

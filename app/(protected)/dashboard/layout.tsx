@@ -50,7 +50,7 @@ const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
             </Breadcrumb>
           </div>
         </header>
-        <div className="w-full h-screen m-3">{children}</div>
+        <div className="h-screen m-3">{children}</div>
       </SidebarInset>
     </SidebarProvider>
   );

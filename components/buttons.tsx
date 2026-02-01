@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Button } from "./ui/button";
 import { Spinner } from "./ui/spinner";
 import {
+  IconArrowLeftDashed,
   IconLogout,
   IconMoonStars,
   IconSunHighFilled,
@@ -15,6 +16,21 @@ import { useRouter } from "next/navigation";
 import { toastManager } from "./ui/toast";
 import { deleteAccount } from "@/lib/action";
 import { useTheme } from "next-themes";
+
+export const ButtonSettings = ({
+  children,
+  ...props
+}: React.ComponentProps<typeof Button>) => {
+  return (
+    <Button
+      {...props}
+      className="min-w-20
+  "
+    >
+      {children}
+    </Button>
+  );
+};
 
 export const ButtonField = ({
   formId,
@@ -133,10 +149,10 @@ export const DeleteAccount = () => {
   };
 
   return (
-    <DropdownMenuItem onClick={handleDeleteAccount} variant="destructive">
+    <Button onClick={handleDeleteAccount} variant="destructive">
       <IconTrash />
       Hapus account
-    </DropdownMenuItem>
+    </Button>
   );
 };
 
@@ -147,7 +163,7 @@ export const ThemeToggle = () => {
     setTheme(theme === "light" ? "dark" : "light");
   };
   return (
-    <DropdownMenuItem onClick={() => handleTheme()}>
+    <Button onClick={() => handleTheme()}>
       {theme === "dark" ? (
         <>
           <IconSunHighFilled /> <span>light mode</span>
@@ -157,6 +173,16 @@ export const ThemeToggle = () => {
           <IconMoonStars /> <span>dark mode</span>
         </>
       )}
-    </DropdownMenuItem>
+    </Button>
+  );
+};
+
+export const ButtonPreviusePage = () => {
+  const router = useRouter();
+
+  return (
+    <Button onClick={() => router.back()}>
+      <IconArrowLeftDashed /> Kembali
+    </Button>
   );
 };

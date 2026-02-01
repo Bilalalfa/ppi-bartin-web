@@ -3,6 +3,7 @@
 import { headers } from "next/headers";
 import { auth } from "./auth";
 import prisma from "./prisma";
+import { studentAccount } from "./account";
 
 interface IServerPrompt {
   status: "error" | "success";
@@ -122,6 +123,65 @@ export const deleteAccount = async (): Promise<IServerPrompt> => {
     return {
       status: "error",
       msg: error.message || "Terjadi kesalahan pada server",
+    };
+  }
+};
+
+export const gantiNamaSiswaAction = async (
+  namaSiswa: string,
+): Promise<IServerPrompt> => {
+  const session = await studentAccount();
+
+  try {
+    await prisma.user.update({
+      where: { id: session.user.id },
+      data: { name: namaSiswa },
+    });
+
+    return {
+      status: "success",
+      msg: "nama telah di perbarui",
+    };
+  } catch (error) {
+    console.error(error);
+    return {
+      status: "error",
+      msg: "maaf! masalah pada server",
+    };
+  }
+};
+
+export const gantiNomorSiswaAction = async (
+  nomorSiswa: string,
+): Promise<IServerPrompt> => {
+  const session = await studentAccount();
+
+  const compare = await prisma.dataSiswa.findUnique({
+    where: { id_siswa: nomorSiswa },
+  });
+
+  if (!compare) {
+    return {
+      status: "error",
+      msg: "nomor yang kamu masukkan tidak ada di data",
+    };
+  }
+
+  try {
+    await prisma.user.update({
+      where: { id: session.user.id },
+      data: { nomorSiswa },
+    });
+
+    return {
+      status: "success",
+      msg: "account berhasil hapus diperbarui!",
+    };
+  } catch (error) {
+    console.error(error);
+    return {
+      status: "error",
+      msg: "masalah pada server student",
     };
   }
 };

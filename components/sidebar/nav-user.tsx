@@ -1,6 +1,6 @@
 "use client";
 
-import { ChevronsUpDown } from "lucide-react";
+import { ChevronsUpDown, Settings2 } from "lucide-react";
 
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import {
@@ -10,6 +10,7 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
+  DropdownMenuItem,
 } from "@/components/ui/dropdown-menu";
 import {
   SidebarMenu,
@@ -17,16 +18,14 @@ import {
   SidebarMenuItem,
   useSidebar,
 } from "@/components/ui/sidebar";
-import { DeleteAccount, SignOutSessionButton, ThemeToggle } from "../buttons";
+import { DeleteAccount, SignOutSessionButton } from "../buttons";
 import { authClient } from "@/lib/auth-client";
-import { redirect } from "next/navigation";
+import Link from "next/link";
 
 const NavUser = () => {
   const { isMobile } = useSidebar();
 
   const { data: session } = authClient.useSession();
-
-  if (!session) redirect("/login");
 
   return (
     <SidebarMenu>
@@ -39,16 +38,16 @@ const NavUser = () => {
             >
               <Avatar className="h-8 w-8 rounded-lg">
                 <AvatarImage
-                  src={session.user.image || ""}
-                  alt={session.user.name}
+                  src={session?.user.image || ""}
+                  alt={session?.user.name}
                 />
                 <AvatarFallback className="rounded-lg">CN</AvatarFallback>
               </Avatar>
               <div className="grid flex-1 text-left text-sm leading-tight">
                 <span className="truncate font-medium">
-                  {session.user.name}
+                  {session?.user.name}
                 </span>
-                <span className="truncate text-xs">{session.user.email}</span>
+                <span className="truncate text-xs">{session?.user.email}</span>
               </div>
               <ChevronsUpDown className="ml-auto size-4" />
             </SidebarMenuButton>
@@ -63,26 +62,31 @@ const NavUser = () => {
               <div className="flex items-center gap-2 px-1 py-1.5 text-left text-sm">
                 <Avatar className="h-8 w-8 rounded-lg">
                   <AvatarImage
-                    src={session.user.image || ""}
-                    alt={session.user.name}
+                    src={session?.user.image || ""}
+                    alt={session?.user.name}
                   />
                   <AvatarFallback className="rounded-lg">CN</AvatarFallback>
                 </Avatar>
                 <div className="grid flex-1 text-left text-sm leading-tight">
                   <span className="truncate font-medium">
-                    {session.user.name}
+                    {session?.user.name}
                   </span>
-                  <span className="truncate text-xs">{session.user.email}</span>
+                  <span className="truncate text-xs">
+                    {session?.user.email}
+                  </span>
                 </div>
               </div>
             </DropdownMenuLabel>
             <DropdownMenuSeparator />
             <DropdownMenuGroup>
-              <ThemeToggle />
+              <Link href={"/dashboard/settings"}>
+                <DropdownMenuItem>
+                  <Settings2 />
+                  Setting
+                </DropdownMenuItem>
+              </Link>
               <SignOutSessionButton />
             </DropdownMenuGroup>
-            <DropdownMenuSeparator />
-            <DeleteAccount />
           </DropdownMenuContent>
         </DropdownMenu>
       </SidebarMenuItem>

@@ -5,7 +5,6 @@ import { useForm } from "@tanstack/react-form";
 import { Field, FieldError, FieldLabel } from "../ui/field";
 import { Input } from "../ui/input";
 import { useState } from "react";
-// import { matchingDataStudent } from "@/lib/action";
 import { ButtonField } from "../buttons";
 import { completeProfile } from "@/lib/action";
 import { toastManager } from "../ui/toast";
